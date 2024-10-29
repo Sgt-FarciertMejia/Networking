@@ -1,0 +1,89 @@
+https://net.cybbh.io/public/networking/latest/index.html
+http://10.50.23.214:8000/    http://networking-ctfd-1.server.vta:8000/
+osi model 7 layers = Application - SSH HTTTPS ect, Presentaton, Session - Connection, Transport - TCP & UDP, Network - How networks talk IPV4 IPV6 ICMP routing protocols, Data Link - Mac Address, Physical
+PDU (Protocol Data Unit) Physical = Bit, Data Link = Frame, Network = Packet, Transport = Segment/Datagram, Session-Application = Data
+iana is in charged of domain space and manages dns
+ieee 
+rfc (request for comment)
+binary groupings are bit 1, nibble 4, byte 8, half word 16, word 32
+base64 characters have a binary value associated to it a-z 0-9 + / = means known vakue
+Topologies 
+  Bus 
+  Star all machines plugged into a center switch
+  Ring Topology keeps going all mavhines connected in a ring
+  Mesh is simaitar to star without a center swith there are partial mesh and full mesh where everybox is connected
+  wireless is a topology with center being an ap 
+  Hierarchial (used by most companies) access layer for users, distribution layer, core layer
+Devices
+  Hub put in info in one and broadcast info to all connected devices
+  Repeater extands signal cable but degredation of quality may occur
+  Switches can support different organizational units no ip needed uses mac addressing and can create vlans, creates cam table by reading source mac and adding it to its table and sends traffic to dest mac
+  Routers have routing tables that is a collection of ipv4, ipv6 addresses
+Ethernet Tming
+  10 Mbps 100 ns
+  100Mbps 10ns
+  1 Gbps 1ns
+  10 Gbps .1ns
+  100 Gbps .01ns
+Ethernet = 802.3(x) Wireless 802.11(x) Token Ring 802.5
+Encapsulation and Decapsulation occurs with ip header
+mac address is 48 bit | 6 B | 12 hex first 24 bits is oui anf last 24 is vendor specific, mac address do not transfer between routers
+mac address type unicast 1 to 1 - 8th bit is off, multicast 1 to many 8th bit on, broadcast 1 to all all bits on
+0x0800 = IPv4, 0x86DD = IPv6, 0x0806 = ARP, 0x8100 VLAN tag
+for multiple vlan 0x88A8 ust be before 0x8100
+Arp cache is dynamic and can last up to 20 mins and at minimum default gateway will be in arp cache
+VLAN Trunking Protocol is proprietary to cisco
+Dynamic Trunking Protocol cisco proprietary and is on by default
+Cisco Discovery Protocol
+Foundry Discovery Protocol
+Link Layer Discovery Protocol
+Spanning Tree Protocol 802.11D, Per VLAN Spanning TREE +, 802.1w Rapid Spanning Tree Protocol, Rapid Per VLAN Spanning Tree +, 802.1s Multiple Spanning Tree Protocol
+Port Security modes are Shutdown(default), Protect, Restrict
+BPDU(Bridge protocol Data Unit) is whats sent by bridge iot create root bridge used by dtp, vtp, stp, cdp, fdp to communicate
+
+Offset value formula for fragmented packets (MTU-(IHL*4))/8
+IHL are in length of words 32bits 
+APIPA 169.254.0.0/16
+
+types of vpn include remote access(client-to-site), site to site
+ssh asymmetric or pki for key exchange, user key and host key are asymmetric while session key is symmetric
+ssh known host database is in ~/.ssh/known_hosts
+ssh config files /etc/ssh/ssh_config and /etc/ssh/sshd.config
+HTTP 80 clear text no encryption
+HTTPS 443 encrypted
+both use user request mthods GET/HEAD/POST/PUT
+DNS TCP/UDP 53 UDP is for queries and TCP is for zone transfer
+  dns records are
+  A - IPV$ record
+  AAAA - IPV6 record
+  MX - Mail Server record
+  TXT - human readable text
+  NS - Name Server record
+  SOA - tart of Authority
+DHCPV4
+  DORA is the acronym
+  Discorver (Broadcast)
+  Offer(Unicast)
+  Request(Broadcast)
+  Acknowledge(Unicast)
+DHCPv6
+  SLAAC
+  Solicit(Multicast)
+  Advertise(Unicast)
+  Request or Info Request(Multicast)
+  Reply(Unicast)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
