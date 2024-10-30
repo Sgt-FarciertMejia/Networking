@@ -73,6 +73,9 @@ DHCPv6
   Request or Info Request(Multicast)
   Reply(Unicast)
 
+Socket types include user space and kernel space
+  user space ae stream socket (TCP) & datagram sockt (UDP)
+  kernel space are raw sockets require elevated perms
 
 
 
