@@ -1,0 +1,63 @@
+ARP storms - check which mac is sending the most arp requests.
+Filters for arp are arp.opcode == 1 (request) arp.opcode == 2 (reply)
+Arp MITM attack - look for multiple ip addresses using the same mac address
+Rarp opcodes are arp.opcode == 3 (request) arp.opcode == 4 (reply)
+cisco discovery protocol filter is cdp
+size of data (payload)/8 for offset of data
+HSRP virtual ip address is in the details pane collapse hsrp to view
+HSRP multicast address look at ip dst of advertises
+HSRP active router under info column will say active
+vrrp virtual ip is found in details pane at ip address
+to find eigrp broadcasting routes look for multicast address as dst and for internal route value in details pane under info it will say update
+bgp as peer number find ips advertisement and look at aggregators as #
+dhcp (bootp) offered ip address look for info that says offer and use the dst ip 
+dns filters
+  dns.qry.type ==
+    A = 1
+    AAAA = 28
+    MX == 15
+    Zone Transfer == 252
+HTTP url address look at full request uri
+HTTPS url look at ascii dump where info says client hello
+
+BPF filters
+sudo tcpdump -n "(ip6[7] <= 64 || ip[8] <= 64)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ip[6]&64  == 64)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[0:2] > 1024) || (udp[0:2] > 1024)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ip6[6] == 17) || (ip[9] == 17)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[13] == 20) || (tcp[13] == 17)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ether[12:2] == 0x8100)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[0:2] == 53) || (tcp[2:2] == 53) || (udp[0:2] == 53) || (udp[2:2] == 53)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[13] == 2)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[13] == 18)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[13] == 4)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[2:2] <= 1023) || (udp[2:2] <= 1023)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[2:2] == 80) || (tcp[0:2] == 80)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(tcp[2:2] == 23) || (tcp[0:2] == 23)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ether[12:2] == 0x0806)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ip[6] & 128 = 128)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+    evil bit in ipv4 header is the reserved bit
+sudo tcpdump -n "(ip[9] = 16)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ip[1] >> 2 = 37)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+sudo tcpdump -n "(ip[8]  = 1) && (ip[9] = 1 || ip[9] = 17)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+    windows uses icmp for pings and linux uses udp
+sudo tcpdump -n "(tcp[13] = 0x0 && ip[16:4] == 0x0a0a0a0a)" -r /home/activity_resources/pcaps/BPFCheck.pcap | wc -l
+ether[16:4] & 0xffff0fff = 0x8100000a) && (ether[12:4] & 0xffff0fff = 0x81000001
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
