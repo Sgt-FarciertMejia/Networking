@@ -77,10 +77,28 @@ Socket types include user space and kernel space
   user space ae stream socket (TCP) & datagram sockt (UDP)
   kernel space are raw sockets require elevated perms
 
-
-
-
-
+Kernel space sockets you are attempting to modify the encapsulation of data
+nc -lp # (tcp listening port) nc -lup # (udp listening port)
+Encode text to hex
+  echo "message" | xxd
+Encode file to hex
+  xxd file.txt file-encoded.txt
+Decode filr from hex
+  xxd -r file-encoded.tx file-decoded.txt
+Python hex encoding
+  import binascii
+  message = b'Message'
+  hidden_msg = binascii.hexlify(message)
+Encode text to base64:
+  echo "Message" | base64
+Endode file to Base64:
+  base64 file.txt > file-encoded.txt
+Decode file from Base64:
+  base64 -d file-encoded.txt > file-decoded.txt
+Python Base64 Encoding
+  import base64
+  message = b'Message'
+  hidden_msg = base64.b64encode(message)
 
 
 
