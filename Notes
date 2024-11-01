@@ -214,7 +214,16 @@ Active Internal
     Dev Tcp Scanning
       for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo "$p open"; done
     
-
+Required info for network maps
+  Network Forensics - Mapping    
+      Device type (Router/host)
+      System Host-names
+      Interface names (eth0, eth1, etc)
+      IP address and CIDRs for all interfaces
+      TCP and UDP ports
+      MAC Address
+      OS type/version
+      Known credentials
 
 
 
