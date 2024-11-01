@@ -102,74 +102,118 @@ Python Base64 Encoding
 
 Passsive external methods 
   osint and publicaly avail info
-  
-Ping sweep
-for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
 
-Netcat - Horizontal Scanning
-    Range of IPs for specific ports
-    TCP
-      for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
-    UDP
-      for i in {1..254}; do nc -nuvzw1 172.16.82.$i 1000-2000 2>&1 & done | grep -E 'succ|open'
+Active External
+    Ping sweep
+    for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+    
+    Netcat - Horizontal Scanning
+        Range of IPs for specific ports
+        TCP
+          for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
+        UDP
+          for i in {1..254}; do nc -nuvzw1 172.16.82.$i 1000-2000 2>&1 & done | grep -E 'succ|open'
+    
+    Netcat - Vertical Scan   
+        Range of ports on specific IP
+        TCP
+          nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
+        UDP
+          nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
+    
+    Netcat - Banner Grabbing
+     Find what is running on a particular port
+        nc [Target IP] [Target Port]
+        nc 172.16.82.106 22
+        nc -u 172.16.82.106 53
+        -u : To switch to UDP
+    
+    Curl and WGET
+     Both can be used to interact with the HTTP, HTTPS and FTP protocols.
+      Curl - Displays ASCII
+      curl http://172.16.82.106
+      curl ftp://172.16.82.106
+      curl 172.16.82.106:80
+    Wget - Downloads (-r recursive)
+      wget -r http://172.16.82.106
+      wget -r ftp://172.16.82.106
+      wget 172.16.82.106
+      wget 172.16.82.106:80
 
-Netcat - Vertical Scan   
-    Range of ports on specific IP
-    TCP
-      nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
-    UDP
-      nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
+Passive Internal
+    IP Configuration
+    Windows: ipconfig /all
+    Linux: ip address (ifconfig depreciated)
+    VyOS: show interface
+    
+    DNS Configuration
+    Windows: ipconfig /displaydns
+    Linux: cat /etc/resolv.conf
+    
+    Arp Cache
+    Windows: arp -a
+    Linux: ip neighbor (arp -a depreciated)
+    
+    Network Connection
+      Windows: netstat
+      Linux: ss (netstat depreciated)
+      Example options useful for both netstat and ss: -antp
+      a = Displays all active connections and ports.
+      n = No determination of protocol names. Shows 22 not SSH.
+      t = Display only TCP connections.
+      u = Display only UDP connections.
+      p = Shows which processes are using which sockets.
+      l = listening ports
+    
+    Services File
+      Windows: %SystemRoot%\system32\drivers\etc\services
+      Linux/Unix: /etc/services
+    
+    OS Info
+      Windows: systeminfo
+      Linux: uname -a and /etc/os-release
+    
+    Running Process
+      Windows: tasklist
+      Linux: ps or top
+      Example options useful for ps: -elf
+      e = Show all running processes
+      l = Show long format view
+      f = Show full format listing
+    
+    Command Path commands
+      which <command>
+      whereis <command>
+    
+    Routing Table
+      Windows: route print
+      Linux: ip route (netstat -r deprecated)
+      VyOS: show ip route
+      
+    File Search
+      find / -name hint* 2> /dev/null
+      find / -iname flag* 2> /dev/null
+    
+    SSH Config
+      Windows: C:\Windows\System32\OpenSSH\sshd_config
+      Linux: /etc/ssh/sshd_config
 
-Netcat - Banner Grabbing
- Find what is running on a particular port
-    nc [Target IP] [Target Port]
-    nc 172.16.82.106 22
-    nc -u 172.16.82.106 53
-    -u : To switch to UDP
+Active Internal
+    Arp Scanning
+      arp-scan --interface=eth0 --localnet
+      nmap -sP -PR 172.16.82.96/27
 
-Curl and WGET
- Both can be used to interact with the HTTP, HTTPS and FTP protocols.
-  Curl - Displays ASCII
-  curl http://172.16.82.106
-  curl ftp://172.16.82.106
-  curl 172.16.82.106:80
-Wget - Downloads (-r recursive)
-  wget -r http://172.16.82.106
-  wget -r ftp://172.16.82.106
-  wget 172.16.82.106
-  wget 172.16.82.106:80
-  
+    Ping Scanning
+      ping -c 1 172.16.82.106
+      for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+      sudo nmap -sP 172.16.82.96/27
+    
+    Dev Tcp Banner Grab
+      exec 3<>/dev/tcp/172.16.82.106/22; echo -e "" >&3; cat <&3
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    Dev Tcp Scanning
+      for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo "$p open"; done
+    
 
 
 
