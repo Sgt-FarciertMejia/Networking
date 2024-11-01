@@ -100,11 +100,90 @@ Python Base64 Encoding
   message = b'Message'
   hidden_msg = base64.b64encode(message)
 
-
-
-
-
-
-
-
+Passsive external methods 
+  osint and publicaly avail info
   
+Ping sweep
+for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+
+Netcat - Horizontal Scanning
+    Range of IPs for specific ports
+    TCP
+      for i in {1..254}; do nc -nvzw1 172.16.82.$i 20-23 80 2>&1 & done | grep -E 'succ|open'
+    UDP
+      for i in {1..254}; do nc -nuvzw1 172.16.82.$i 1000-2000 2>&1 & done | grep -E 'succ|open'
+
+Netcat - Vertical Scan   
+    Range of ports on specific IP
+    TCP
+      nc -nzvw1 172.16.82.106 21-23 80 2>&1 | grep -E 'succ|open'
+    UDP
+      nc -nuzvw1 172.16.82.106 1000-2000 2>&1 | grep -E 'succ|open'
+
+Netcat - Banner Grabbing
+ Find what is running on a particular port
+    nc [Target IP] [Target Port]
+    nc 172.16.82.106 22
+    nc -u 172.16.82.106 53
+    -u : To switch to UDP
+
+Curl and WGET
+ Both can be used to interact with the HTTP, HTTPS and FTP protocols.
+  Curl - Displays ASCII
+  curl http://172.16.82.106
+  curl ftp://172.16.82.106
+  curl 172.16.82.106:80
+Wget - Downloads (-r recursive)
+  wget -r http://172.16.82.106
+  wget -r ftp://172.16.82.106
+  wget 172.16.82.106
+  wget 172.16.82.106:80
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
