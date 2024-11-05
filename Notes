@@ -262,8 +262,8 @@ when ssh using port forwarding use loopback add and bindportmyport of that ssh f
 
 FOR LOOPBACK COMPREHENSION
 Key is geen is my nbox
-ssh user@bh1 -L bindport:tgtip:tgtport bindport is green everything is purple and belongs to tgt
-ssh user@bh1 -R bindport:tgtip:tgtport only -R and tgt and tgt port is green rest is purple
+ssh user@bh1 -L bindport:tgtip:tgtport bindport is green everything is purple and belongs to tgt (LO is the host after @)
+ssh user@bh1 -R bindport:tgtip:tgtport only -R and tgt and tgt port is green rest is purple (LO is host in cli hostname)
 
 
 
