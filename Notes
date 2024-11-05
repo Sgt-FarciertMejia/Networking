@@ -241,10 +241,29 @@ Reverse shell with nc and /dev/tcp
 to view a commands being ran
   watch -n1 'command'
 
+SSH Options
+    -L - Creates a port on the client mapped to a ip:port via the server
+        ssh -p <optional alt port> <user>@<server ip> -L <local bind port>:<tgt ip>:<tgt port> -NT
+        or
+        ssh -L <local bind port>:<tgt ip>:<tgt port> -p <alt port> <user>@<server ip> -NT
+        ssh <user>@<ip> -L <bindportmyport>:<tgt ip>:<tgt port>
+        SSgt EX.) ssh user@bh1 -L 52200:127.0.0.1:80 -NT
+        (in this example bh1 was used as a forwarder and tgt ip was a host on internal net)ssh user@bh1 -L <bindportmyport>:tgt ip:tgt port         
+    -D - Creates a port on the client and sets up a SOCKS4 proxy tunnel where the target ip:port is specified dynamically
+        ssh user@bh1extip -D 9050 -NT
+          nmap scans
+            proxychains nmap -T4 -vvvv -p 21-23,80 <ip> -Pn
+    -R - Creates the port on the server mapped to a ip:port via the client
+        ssh user@bh1intip -R 52299(remote host opens this port):127.0.0.1(LO):80 -NT [PART 2] ssh user@bh1 -L 52202(bindportmyport):127.0.0.1(LO):52299(tgt port -R port) -NT  
+    -NT - Do not execute a remote command and disable pseudo-tty (will hang window)
 
+netstat command not found use ss -ntlp
+when ssh using port forwarding use loopback add and bindportmyport of that ssh forward
 
-
-
+FOR LOOPBACK COMPREHENSION
+Key is geen is my nbox
+ssh user@bh1 -L bindport:tgtip:tgtport bindport is green everything is purple and belongs to tgt
+ssh user@bh1 -R bindport:tgtip:tgtport only -R and tgt and tgt port is green rest is purple
 
 
 
