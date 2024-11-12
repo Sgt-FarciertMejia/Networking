@@ -1,8 +1,11 @@
-  #Avatar
+ #Avatar
 
 ssh Aang@127.0.0.1 -p 50500 -L 50501:10.0.0.50:22 -NT
+
 ssh Sokka@ip -L 50500:192.168.1.39(new box):22 -NT
+
 ssh Toph@127.0.0.1 -p 50502 -D 9050 -NT
+
 ssh Katara@127.0.0.1 -p 50501 -L 50502:172.16.1.8:22
 
 Follow along 
@@ -45,12 +48,16 @@ poxychains wget -r
 Tunnel to get acces to a port you dont have access to or encrypt unencrypted traffic not for ports u have access tooooooo
 
 
-  #Rick&Morty
+ #Rick&Morty
 
 ssh student@10.50.21.18 -R 50599:127.0.0.1:22 -NT
+
 ssh Beth@127.0.0.1 -p 50502 -D 9050 -NT
+
 ssh Rick@127.0.0.1 -p 50599 -L 50500:10.1.2.18:2222 -NT F to Morty
+
 ssh Morty@127.0.0.1 -p 50500 -L 50501:172.16.10.121:2323 -NT F to Jerry
+
 ssh Jerry@127.0.0.1 -p 50501 -L 50502:192.168.10.69:22 -NT F to Beth
 
 Rick=10.1.2.17 23,80/22int
