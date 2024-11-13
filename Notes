@@ -391,8 +391,31 @@ SNORT
               limit to be exceeded
     * seconds - time period over which count is accrued. [s] must be nonzero value
 
-
-
+SNORT RULES EXAMPLES
+alert tcp any any -> any any (msg:"SYN FIN Scan"; flags: SF;sid:9000005;)
+alert tcp any any -> any any (msg:"FIN Scan"; flags: F;sid:9000006;)
+alert tcp any any -> any any (msg:"NULL Scan"; flags: 0;sid:9000007;)
+alert tcp any any -> any any (msg:"XMAS Scan"; flags: FPU;sid:9000008;)
+alert tcp any any -> any any (msg:"Full XMAS Scan"; flags: SRAFPU;sid:9000009;)
+alert tcp any any -> any any (msg:"URG Scan"; flags: U;sid:9000010;)
+alert tcp any any -> any any (msg:"URG FIN Scan"; flags: FU;sid:9000011;)
+alert tcp any any -> any any (msg:"PUSH FIN Scan"; flags: FP;sid:9000012;)
+alert tcp any any -> any any (msg:"URG PUSH Scan"; flags: PU;sid:9000013;)
+alert ip any any -> any any ( msg:"INDICATOR-SHELLCODE x86"; content:"|90 90 90 90 90 90 90 90 90 90 90 90 90 90|",fast_pattern,nocase; metadata:policy max-detect-ips drop,ruleset community; sid:648; rev:18; )
+alert tcp any any -> any 443 ( msg:"MALWARE-CNC Malicious BitCoiner Miner download - Win.Trojan.Minerd"; flow:to_server,established; content:"/minerd.exe",fast_pattern,nocase; http_raw_uri;  http_uri; metadata:impact_flag red,policy balanced-ips drop,policy security-ips drop,ruleset community; reference:url,www.virustotal.com/en/file/583b585078f37f5d399a228f1b8021ca0a9e904a55792281048bae9cfe0e95c1/analysis/; sid:30551; rev:2; )
+alert tcp any any -> any 443 ( msg:"MALWARE-CNC Malicious BitCoiner Miner download - Win.Trojan.Systema"; flow:to_server,established; content:"/aviatic/systema.exe",fast_pattern,nocase; http_raw_uri; http_uri; metadata:impact_flag red,policy balanced-ips drop,policy security-ips drop,ruleset community; reference:url,www.virustotal.com/en/file/583b585078f37f5d399a228f1b8021ca0a9e904a55792281048bae9cfe0e95c1/analysis/; reference:url,www.virustotal.com/en/file/e8bd297b1f59b7ea11db7d90e81002469a8f054f79638a57332ac448d819fb5d/analysis/; sid:30552; rev:2; )
+alert ip any any -> any any ( msg:"INDICATOR-SHELLCODE"; content:"|90 90 90 E8 C0 FF FF FF|/bin/sh",fast_pattern,nocase; metadata:ruleset community; sid:652; rev:15; )
+alert icmp any any -> any any (msg:ICMP detected; sid:111; rev:1;)
+#alert tcp any any -> any 22 ( msg:"SSH attempt detected"; sid:9000015;)
+alert tcp any any -> any 53 ( msg:"PROTOCOL-DNS dns zone transfer via TCP detected"; flow:to_server,established; content:"|00 01 00 00 00 00 00|",depth 8,offset 6; byte_test:1,!&,0xF8,4; content:"|00 00 FC 00 01|",fast_pattern; isdataat:!1,relative; metadata:ruleset community; reference:cve,1999-0532; reference:nessus,10595; sid:255; rev:23; )
+alert udp any any -> 10.0.0.0/8 [137,138] (msg:"ransomware";sid:1000006;)
+alert tcp any any -> 10.0.0.0/8 139 (msg:"ransomware";sid:1000007;)
+alert tcp any any -> 10.0.0.0/8 445 (msg:"ransomware";sid:1000008;)
+alert icmp any any -> any any (msg:"Cows";content:"|DEADBEEF|";sid:1000001;)
+alert icmp any any -> 10.3.0.0/24 any (msg:"DMZ Ping";itype:8;icode:0;sid:1000002;)
+alert icmp any any -> any any (msg:ICMP detected; sid:111; rev:1;)
+alert ip any any -> 192.168.65.20 3389 (msg:"RDP";sid:1000004;)
+alert tcp any any -> any 22 (msg:"ssh 3 strikes";threshold:type both,track by_src,count 3,seconds 10;sid:1000003;)
 
 
 
