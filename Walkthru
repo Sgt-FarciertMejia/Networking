@@ -98,3 +98,18 @@ find next host and ssh port
 
 once -D is the final box execute on flagged port
 proxychains nc 127.0.0.1 54321
+
+#Southpark
+ssh student@10.50.21.18 -R 50299:127.0.0.1:8462 -NT
+created remote port on local host due to float only having tel accessible
+ssh Eric@127.0.0.1 -p 50299 -L 50200:192.168.100.60:22
+port forward on local host to ssh to Kenny 2nd pivot
+ssh Kenny@127.0.0.1 -p 50200 -L 50201:10.90.50.140:6481 -NT
+port forward on local host to ssh to Kyle 3rd pivot
+ssh Kyle@127.0.0.1 -p 50201 -L 50202:172.20.21.5:23 -NT
+port forward on local host to 4th pivot telnet due to ssh closed to external net
+ssh Kyle@172.20.21.4 -p 6481 -R 50298:127.0.0.1:22 -NT
+remote port opened on Kyle 3rd pivot from Stan 4th pivot iot allow an ssh connection
+ssh Kyle@127.0.0.1 -p 50201 -L 50203:127.0.0.1:50298 -NT
+port forward on local host to allow ssh to 4th and final pivot
+
