@@ -452,4 +452,4 @@ proxychains ftp <ip>
 live traffic sniffing with tcpdump
 proxychains scp net5_student2@192.168.10.101:/usr/share/cctc/capstone-analysis_HEX-ENCODED.pcap ~
 snort.conf has active rules
-/var/log/snort is the log file with alert messages 
+/var/log/snort is the log file with alert messages (if theres a diff log file ps -elf | grep snort will find daemon and new log file location)
