@@ -1,0 +1,455 @@
+echo "CHEESE" | base64
+Q0hFRVNFCg==
+for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done 2>/dev/null
+nmap -T4 -Pn -vvvv -p 21-23,80
+find / -name *.pcap 2> /dev/null
+ssh net5_student2@10.50.20.84 -L 50200:10.1.1.11:23 -NT Telnet tunnel NOT ACTIVE
+
+Floating IP of start pivot is: 10.50.20.84
+creds: netY_studentX:passwordX 
+hint found on host = host is pivot for net fund  and program sections
+
+10.50.20.84 Host Enum
+net5_student2@capstone-01:~$ ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:05:02:44 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.1.30/25 brd 10.1.1.127 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe05:244/64 scope link 
+       valid_lft forever preferred_lft forever
+Ping sweep=
+64 bytes from 10.1.1.11: Capstone-02	21/23
+webservice port # is same as RFC# that governs ipv4 private addressing = 1918/ pcap saved on this machine needs to be looked at                          /usr/share/cctc/capstone-bpf.pcap DONE
+
+64 bytes from 10.1.1.25: Capstone-03	21
+Nmap scan report for 10.1.1.25(Capstone-03?) -> webservice running on port # same as RFC # that governs IPv4 header structure = 791/ another hint in student home drive no ssh acces so use ftp with student creds
+
+64 bytes from 10.1.1.33: Capstone-04	21/23/80
+Nmap scan report for 10.1.1.33(Capstone-04) -> capstone-05 diff net ports W32/Blaster Worm (TCP ports UDP ports 69 (TFTP), 135, 137, and 138; and TCP port 4444)/ Rip v2 runs on 10.1.1.0/25 sniff traffic to see what nets its advertises updates youll find an ip to pivot into next environment from int host
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:df:26:49 brd ff:ff:ff:ff:ff:ff
+    inet 10.1.1.33/25 brd 10.1.1.127 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fedf:2649/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:c7:b9:cc brd ff:ff:ff:ff:ff:ff
+    inet 1.1.1.1/29 brd 1.1.1.7 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fec7:b9cc/64 scope link 
+       valid_lft forever preferred_lft forever
+ip r
+default via 10.1.1.126 dev eth0 
+default via 1.1.1.6 dev eth1 
+1.1.1.0/29 dev eth1 proto kernel scope link src 1.1.1.1 
+10.1.1.0/25 dev eth0 proto kernel scope link src 10.1.1.33 
+net5_student2@capstone-04:~$ ip n | grep -v FAILED
+10.1.1.30 dev eth0 lladdr fa:16:3e:05:02:44 REACHABLE
+10.1.1.125 dev eth0 lladdr fa:16:3e:10:75:00 STALE
+10.1.1.126 dev eth0 lladdr fa:16:3e:05:49:ee REACHABLE
+10.1.1.90 dev eth0 lladdr fa:16:3e:49:a3:7e STALE
+10.1.1.11 dev eth0 lladdr fa:16:3e:59:c6:d4 STALE
+1.1.1.2 dev eth1 lladdr fa:16:3e:30:1e:6b REACHABLE
+ping sweep
+64 bytes from 1.1.1.2: icmp_seq=1 ttl=64 time=0.240 ms
+64 bytes from 1.1.1.4: icmp_seq=1 ttl=64 time=1.47 ms
+ss -plant
+LISTEN       0            128                      0.0.0.0:80                    0.0.0.0:*           
+LISTEN       0            128                      0.0.0.0:23                    0.0.0.0:*           
+ESTAB        0            0                      10.1.1.33:23                  10.1.1.30:56226       
+ESTAB        0            0                      10.1.1.33:23                  10.1.1.30:46402       
+ESTAB        0            0                      10.1.1.33:23                  10.1.1.30:34324       
+LISTEN       0            128                         [::]:80                       [::]:*           
+LISTEN       0            128                            *:21                          *:*  
+
+capstone04 q2 ip disc 2 attempt left not 10.1.1.11,25,30,125,90
+64 bytes from 10.1.1.90: 	closed
+64 bytes from 10.1.1.125: 	closed	
+64 bytes from 10.1.1.11: icmp_seq=1 ttl=64 time=11.5 ms
+64 bytes from 10.1.1.25: icmp_seq=1 ttl=64 time=0.385 ms
+64 bytes from 10.1.1.30: icmp_seq=1 ttl=64 time=0.107 ms
+New pivot Capstone-06 10.50.21.126 SSH=7777
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:42:a4:f5 brd ff:ff:ff:ff:ff:ff
+    inet 10.2.2.6/28 brd 10.2.2.15 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe42:a4f5/64 scope link 
+       valid_lft forever preferred_lft forever
+ip n | grep -v FAILED
+10.2.2.7 dev eth0 lladdr fa:16:3e:d6:31:83 REACHABLE
+10.2.2.14 dev eth0 lladdr fa:16:3e:25:1b:63 REACHABLE
+10.2.2.4 dev eth0 lladdr fa:16:3e:57:1a:88 STALE
+ip r
+default via 10.2.2.14 dev eth0 
+10.2.2.0/28 dev eth0 proto kernel scope link src 10.2.2.6 
+net5_student2@capstone-06:~$ for i in {1..14}; do (ping -c 1 10.2.2.$i | grep "bytes from" &) ; done 2>/dev/null
+Nmap scan report for 10.2.2.4
+PORT   STATE  SERVICE REASON
+21/tcp closed ftp     conn-refused
+22/tcp closed ssh     conn-refused
+23/tcp closed telnet  conn-refused
+80/tcp closed http    conn-refused
+
+Nmap scan report for 10.2.2.7 (creds=net5_comrade2/H0ld 73e d00r?)H0ld 73h d00r?
+PORT   STATE  SERVICE REASON
+21/tcp closed ftp     conn-refused
+22/tcp closed ssh     conn-refused
+23/tcp open   telnet  syn-ack
+80/tcp open   http    syn-ack
+2222/ssh high port 
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:d6:31:83 brd ff:ff:ff:ff:ff:ff
+    inet 10.2.2.7/28 brd 10.2.2.15 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fed6:3183/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:f7:9d:e4 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.129/25 brd 10.10.10.255 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fef7:9de4/64 scope link 
+       valid_lft forever preferred_lft forever
+net5_comrade2@capstone-07:~$ ip r
+default via 10.2.2.14 dev eth0 
+default via 10.10.10.254 dev eth1 
+10.2.2.0/28 dev eth0 proto kernel scope link src 10.2.2.7 
+10.10.10.128/25 dev eth1 proto kernel scope link src 10.10.10.129 
+net5_comrade2@capstone-07:~$ ip n | grep -v FAILED
+10.10.10.254 dev eth1 lladdr fa:16:3e:2d:f5:5a STALE
+10.10.10.167 dev eth1 lladdr fa:16:3e:8b:1d:73 STALE
+10.2.2.6 dev eth0 lladdr fa:16:3e:42:a4:f5 REACHABLE
+10.10.10.181 dev eth1 lladdr fa:16:3e:0e:a5:bd STALE
+10.2.2.4 dev eth0 lladdr fa:16:3e:57:1a:88 STALE
+10.2.2.14 dev eth0 lladdr fa:16:3e:25:1b:63 REACHABLE
+10.10.10.182 dev eth1 lladdr fa:16:3e:b8:6d:ee REACHABLE
+10.10.10.140 dev eth1 lladdr fa:16:3e:41:2c:ac REACHABLE
+Ping sweep
+10.10.10.140:Capstone-08
+PORT   STATE  SERVICE REASON
+21/tcp open   ftp     syn-ack
+22/tcp closed ssh     conn-refused
+23/tcp closed telnet  conn-refused
+80/tcp closed http    conn-refused
+301=ssh -> pivot for net recon
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:41:2c:ac brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.140/25 brd 10.10.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe41:2cac/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:5c:38:cf brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.44/27 brd 192.168.10.63 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe5c:38cf/64 scope link 
+       valid_lft forever preferred_lft forever
+net5_student2@capstone-08:~$ ip r
+default via 192.168.10.62 dev eth1 
+default via 10.10.10.254 dev eth0 
+10.10.10.128/25 dev eth0 proto kernel scope link src 10.10.10.140 
+192.168.10.32/27 dev eth1 proto kernel scope link src 192.168.10.44 
+net5_student2@capstone-08:~$ ip n | grep -v FAILED
+192.168.10.39 dev eth1 lladdr fa:16:3e:cc:06:ba STALE
+10.10.10.167 dev eth0 lladdr fa:16:3e:8b:1d:73 STALE
+10.10.10.182 dev eth0 lladdr fa:16:3e:b8:6d:ee STALE
+192.168.10.35 dev eth1 lladdr fa:16:3e:d3:23:a1 STALE
+10.10.10.129 dev eth0 lladdr fa:16:3e:f7:9d:e4 REACHABLE
+192.168.10.62 dev eth1 lladdr fa:16:3e:e1:b0:76 REACHABLE
+net5_student2@capstone-08:~$ for i in {33..62}; do (ping -c 1 192.168.10.$i | grep "bytes from" &) ; done 2>/dev/null
+	64 bytes from 192.168.10.35: icmp_seq=1 ttl=64 time=0.613 ms
+	PORT   STATE  SERVICE REASON
+	21/tcp closed ftp     conn-refused
+	22/tcp closed ssh     conn-refused
+	23/tcp closed telnet  conn-refused
+	80/tcp closed http    conn-refused
+
+	Capstone-09 192.168.10.39: icmp_seq=1 ttl=64 time=0.373 ms
+	PORT   STATE  SERVICE REASON
+	21/tcp open   ftp     syn-ack
+	22/tcp closed ssh     conn-refused
+	23/tcp closed telnet  conn-refused
+	80/tcp closed http    conn-refused
+	webserver=3790
+
+10.10.10.167:Capstone-10
+PORT   STATE  SERVICE REASON
+21/tcp closed ftp     conn-refused
+22/tcp closed ssh     conn-refused
+23/tcp closed telnet  conn-refused
+80/tcp open   http    syn-ack
+ssh=404 -> pivot for movement and redirection
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:8b:1d:73 brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.167/25 brd 10.10.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe8b:1d73/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:f0:14:2e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.70/27 brd 192.168.10.95 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fef0:142e/64 scope link 
+       valid_lft forever preferred_lft forever
+net5_student2@capstone-10:~$ ip r
+default via 192.168.10.94 dev eth1 
+default via 10.10.10.254 dev eth0 
+10.10.10.128/25 dev eth0 proto kernel scope link src 10.10.10.167 
+192.168.10.64/27 dev eth1 proto kernel scope link src 192.168.10.70 
+net5_student2@capstone-10:~$ ip n | grep -v FAILED
+10.10.10.181 dev eth0 lladdr fa:16:3e:0e:a5:bd STALE
+10.10.10.129 dev eth0 lladdr fa:16:3e:f7:9d:e4 REACHABLE
+10.10.10.182 dev eth0 lladdr fa:16:3e:b8:6d:ee STALE
+192.168.10.74 dev eth1 lladdr fa:16:3e:44:e3:c4 STALE
+10.10.10.254 dev eth0 lladdr fa:16:3e:2d:f5:5a STALE
+10.10.10.140 dev eth0 lladdr fa:16:3e:41:2c:ac STALE
+192.168.10.94 dev eth1 lladdr fa:16:3e:da:9f:ae DELAY
+192.168.10.80 dev eth1 lladdr fa:16:3e:7d:84:f1 STALE
+	192.168.10.74: icmp_seq=1 ttl=64 time=0.569 ms
+		PORT   STATE  SERVICE REASON
+		21/tcp closed ftp     conn-refused
+		22/tcp closed ssh     conn-refused
+		23/tcp closed telnet  conn-refused
+		80/tcp closed http    conn-refused
+	192.168.10.80: icmp_seq=1 ttl=64 time=0.423 ms
+		PORT   STATE  SERVICE REASON
+		21/tcp open   ftp     syn-ack
+		22/tcp closed ssh     conn-refused
+		23/tcp closed telnet  conn-refused
+		80/tcp closed http    conn-refused
+
+
+64 bytes from 10.10.10.181: icmp_seq=1 ttl=64 time=1.01 ms
+PORT   STATE  SERVICE REASON
+21/tcp closed ftp     conn-refused
+22/tcp closed ssh     conn-refused
+23/tcp closed telnet  conn-refused
+80/tcp closed http    conn-refused
+
+Capstone-12 10.10.10.182: icmp_seq=1 ttl=64 time=0.319 ms
+PORT   STATE  SERVICE REASON
+21/tcp open   ftp     syn-ack
+22/tcp closed ssh     conn-refused
+23/tcp closed telnet  conn-refused
+80/tcp closed http    conn-refused
+ssh=504 -> pivot for net analasys and filter
+ip a
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:b8:6d:ee brd ff:ff:ff:ff:ff:ff
+    inet 10.10.10.182/25 brd 10.10.10.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:feb8:6dee/64 scope link 
+       valid_lft forever preferred_lft forever
+3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether fa:16:3e:60:fe:34 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.10.99/27 brd 192.168.10.127 scope global eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe60:fe34/64 scope link 
+       valid_lft forever preferred_lft forever
+net5_student2@capstone-12:~$ ip r
+default via 10.10.10.254 dev eth0 
+default via 192.168.10.126 dev eth1 
+10.10.10.128/25 dev eth0 proto kernel scope link src 10.10.10.182 
+192.168.10.96/27 dev eth1 proto kernel scope link src 192.168.10.99 
+net5_student2@capstone-12:~$ ip n
+10.10.10.236 dev eth0  FAILED
+192.168.10.110 dev eth1  FAILED
+10.10.10.229 dev eth0  FAILED
+192.168.10.103 dev eth1  FAILED
+10.10.10.254 dev eth0 lladdr fa:16:3e:2d:f5:5a REACHABLE
+192.168.10.112 dev eth1  FAILED
+10.10.10.247 dev eth0  FAILED
+10.10.10.181 dev eth0 lladdr fa:16:3e:0e:a5:bd STALE
+10.10.10.237 dev eth0  FAILED
+192.168.10.111 dev eth1 lladdr fa:16:3e:fb:a1:4c REACHABLE
+10.10.10.230 dev eth0  FAILED
+192.168.10.120 dev eth1  FAILED
+192.168.10.113 dev eth1  FAILED
+10.10.10.129 dev eth0 lladdr fa:16:3e:f7:9d:e4 REACHABLE
+10.10.10.238 dev eth0  FAILED
+10.10.10.231 dev eth0  FAILED
+192.168.10.121 dev eth1  FAILED
+10.10.10.240 dev eth0  FAILED
+192.168.10.114 dev eth1  FAILED
+192.168.10.104 dev eth1  FAILED
+10.10.10.239 dev eth0  FAILED
+192.168.10.97 dev eth1  FAILED
+10.10.10.248 dev eth0  FAILED
+192.168.10.122 dev eth1  FAILED
+10.10.10.241 dev eth0  FAILED
+192.168.10.115 dev eth1  FAILED
+192.168.10.105 dev eth1  FAILED
+192.168.10.98 dev eth1  FAILED
+10.10.10.249 dev eth0  FAILED
+192.168.10.123 dev eth1  FAILED
+10.10.10.242 dev eth0  FAILED
+10.10.10.167 dev eth0 lladdr fa:16:3e:8b:1d:73 STALE
+192.168.10.116 dev eth1  FAILED
+10.10.10.232 dev eth0  FAILED
+192.168.10.106 dev eth1 lladdr fa:16:3e:2d:51:c1 STALE
+10.10.10.250 dev eth0  FAILED
+192.168.10.124 dev eth1  FAILED
+10.10.10.243 dev eth0  FAILED
+192.168.10.117 dev eth1  FAILED
+10.10.10.140 dev eth0 lladdr fa:16:3e:41:2c:ac STALE
+10.10.10.233 dev eth0  FAILED
+192.168.10.107 dev eth1  FAILED
+192.168.10.100 dev eth1  FAILED
+10.10.10.251 dev eth0  FAILED
+192.168.10.125 dev eth1  FAILED
+10.10.10.244 dev eth0  FAILED
+192.168.10.118 dev eth1  FAILED
+10.10.10.234 dev eth0  FAILED
+192.168.10.108 dev eth1  FAILED
+10.10.10.227 dev eth0  FAILED
+192.168.10.101 dev eth1 lladdr fa:16:3e:a6:76:ca REACHABLE
+10.10.10.252 dev eth0  FAILED
+192.168.10.126 dev eth1 lladdr fa:16:3e:58:c1:53 STALE
+10.10.10.245 dev eth0  FAILED
+192.168.10.119 dev eth1  FAILED
+10.10.10.235 dev eth0  FAILED
+192.168.10.109 dev eth1  FAILED
+10.10.10.228 dev eth0  FAILED
+192.168.10.102 dev eth1  FAILED
+10.10.10.253 dev eth0  FAILED
+10.10.10.246 dev eth0  FAILED
+net5_student2@capstone-12:~$ for i in {97..126}; do (ping -c 1 192.168.10.$i | grep "bytes from" &) ; done 2>/dev/null
+	Capstone13 192.168.10.101: icmp_seq=1 ttl=64 time=0.220 ms
+	PORT   STATE  SERVICE REASON
+	21/tcp open   ftp     syn-ack
+	22/tcp open   ssh     syn-ack
+	23/tcp closed telnet  conn-refused
+	80/tcp closed http    conn-refused
+	webservice=584
+	
+	192.168.10.106: icmp_seq=1 ttl=64 time=0.776 ms
+	PORT   STATE  SERVICE REASON
+	21/tcp closed ftp     conn-refused
+	22/tcp closed ssh     conn-refused
+	23/tcp closed telnet  conn-refused
+	80/tcp closed http    conn-refused
+
+	192.168.10.111: icmp_seq=1 ttl=64 time=0.438 ms
+	PORT   STATE  SERVICE REASON
+	21/tcp open   ftp     syn-ack
+	22/tcp open   ssh     syn-ack
+	23/tcp closed telnet  conn-refused
+	80/tcp closed http    conn-refused
+	webservie=2223
+
+
+
+/usr/share/cctc/capstone-analysis_HEX-ENCODED.pcap
+correct ftp pass is w
+Question 1:
+Which ip address initiated the attack against the FTP server?
+10.1.0.108
+Question 4:
+What is the system IP that was compromised?
+10.2.0.2
+-------------------------------------------------------------------------------
+Question 6:
+
+What is the name of the file taken by the attacker?
+test.txt
+-------------------------------------------------------------------------------
+
+Question 7:
+
+What was the message contained within the extracted file?
+hi
+Question 8:
+
+What is the name of the file uploaded by the attacker?
+company_payroll_2019
+
+
+Question 1:
+How many rule files are on the system?
+
+Provide the number converted to Base64 as your answer.
+
+-------------------------------------------------------------------------------
+
+Question 2:
+
+How many of the rules are currently in use to match on traffic?
+
+Provide the number converted to Base64 as your answer.
+
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+
+Question 4:
+
+What is the exact Alert Message that is being triggered on the system?
+
+Convert the exact message as you see it and convert it to Base64 for your answer.
+
+---------------------------------------------------------------
+
+Question 5:
+
+From what IP is the attack coming from?
+
+Provide your answer in the x.x.x.x format and converted to Base64.
+
+commands good to know
+tcpdump -i eth0 -Xvv tcp port 135
+tcpdump -i eth0 -Xvv udp port 520
+tcpdump -i eth1 -XXnvv udp port 69
+proxychains scp tgt@192.168.1.10:secret.txt .
+
+NEED TO WORK ON
+proxychains ftp <ip>
+live traffic sniffing with tcpdump
+proxychains scp net5_student2@192.168.10.101:/usr/share/cctc/capstone-analysis_HEX-ENCODED.pcap ~
+snort.conf has active rules
+/var/log/snort is the log file with alert messages 
